@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+/*
+  Frangiclave — design tokens.
+  Palette: the Mansus — a mystical dream-world of deep indigo dark, moonlit
+  text, and a luminous azure accent, with violet and teal drifting through the
+  ambient glow. Tailwind v4 reads these @theme values and generates utilities
+  like `bg-void`, `text-parchment`, `text-accent`, `font-display`, etc.
+*/
+@theme {
+  /* Backgrounds — deep indigo-blacks, like looking into the Wood at night. */
+  --color-void: #070910;
+  --color-obsidian: #10131f;
+  --color-crypt: #181c2e;
+  --color-border: #2a2f49;
+
+  /* Text — moonlight on old glass, from bright to faded. */
+  --color-parchment: #e7e9f5;
+  --color-parchment-dim: #a7afd0;
+  --color-ash: #6c7396;
+
+  /* Accents — the glow of the Glory. Azure leads; violet and teal support. */
+  --color-accent: #7aa2f7;         /* luminous azure — primary accent */
+  --color-accent-bright: #a9c4ff;
+  --color-accent-violet: #9d7cd8;  /* amethyst — secondary */
+  --color-accent-teal: #4c9bb0;    /* cold teal — tertiary */
+
+  /* Type — Philosopher (self-hosted, imported in src/main.jsx); serif fallback. */
+  --font-display: 'Philosopher', 'Iowan Old Style', 'Palatino Linotype',
+    Palatino, 'Book Antiqua', 'Hoefler Text', Georgia, serif;
+  --font-body: 'Philosopher', 'Iowan Old Style', 'Palatino Linotype', Palatino,
+    Georgia, serif;
+}
+
+/* Base document styling. */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: var(--color-void);
+  color: var(--color-parchment);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /*
+    The mystical blue gradients: layered radial glows so the dark never reads
+    flat — azure pooling from the top, amethyst (#9d7cd8) and teal (#4c9bb0)
+    drifting in from the corners. Fixed to the viewport so it stays put on
+    scroll.
+  */
+  background-image:
+    radial-gradient(
+      ellipse 90% 60% at 50% -10%,
+      rgba(122, 162, 247, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 65% 55% at 12% 15%,
+      rgba(157, 124, 216, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 70% 60% at 88% 95%,
+      rgba(76, 155, 176, 0.10),
+      transparent 60%
+    );
+  background-attachment: fixed;
+}
+
+/* Selection uses the azure accent. */
+::selection {
+  background: rgba(122, 162, 247, 0.3);
+  color: var(--color-parchment);
+}
