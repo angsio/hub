@@ -6,11 +6,10 @@
 export const site = {
   name: 'Amir Nasirov',
   domain: 'frangiclave.com',
-  tagline: 'A hub for the software I build.',
-  role: '',
+  tagline: 'My Personal and Professional Hub.',
   intro:
-    'I study Engineering Science at the University of Toronto, drawn to structure that enables ' +
-    'scale. Each container below is a finished piece of mine — take a look.',
+    'I study Engineering Science at the University of Toronto. I love to ' +
+    'think in systems because order enables scale. Explore who I am, check out my projects, or contact me.',
 }
 
 // The site's own pages, in navbar order. These are SPA routes (`to`), so the
@@ -24,12 +23,10 @@ export const navLinks = [
 
 // About-page copy, one string per paragraph.
 export const about = [
-  'I study Engineering Science at the University of Toronto, where I lean ' +
-    'toward the systems side of things — how software is structured, deployed, ' +
-    'and kept running rather than just written.',
-  'Most of what I build I also self-host, on a Raspberry Pi. It keeps me honest ' +
-    'about the whole stack, from the code down to the container it ships in. ' +
-    'The Works page is the current crop.',
+  '' +
+  '' +
+  '',
+  ''
 ]
 
 // The container cards on the Works page — each links out to a subdomain and
@@ -53,8 +50,8 @@ export const portals = [
   {
     title: 'Home Lab',
     blurb:
-      'Experiments and prototypes still finding their shape — the Raspberry ' +
-      'Pi setup, small hardware hacks, and works in progress.',
+      'My private and secure hub for my growing technical domain. ' +
+      'My Raspberry Pi setup runs my containers for my personal services.',
     href: 'https://lab.frangiclave.com',
   },
 ]

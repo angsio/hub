@@ -1,0 +1,7 @@
+services:
+  hub-client:
+    build: .
+    container_name: hub-client
+    ports:
+      - "8080:80"
+    restart: unless-stopped

@@ -10,19 +10,17 @@ import { Link } from 'react-router-dom'
     <Button href="#contact">…</Button>       in-page anchor  → <a> (same tab)
     <Button onClick={fn}>…</Button>          action          → <button>
 
-  `variant` picks the look; `href` auto-opens in a new tab only when it's
-  http(s), and stays same-tab for anchors and mailto:.
+  It renders a single element, so its layout lives in one `layout` string
+  rather than inline JSX; `skin` holds the aesthetic (shape + variant colors).
+  `href` auto-opens a new tab only for http(s), staying same-tab for anchors
+  and mailto:.
 */
-const base =
-  'inline-flex items-center justify-center gap-2 rounded-sm px-6 py-3 ' +
-  'font-display transition-colors'
+const layout = 'inline-flex items-center justify-center gap-2 px-6 py-3'
 
-const variants = {
-  primary:
-    'border border-accent/60 bg-accent/10 text-accent-bright hover:bg-accent/20',
-  secondary:
-    'border border-border text-parchment-dim ' +
-    'hover:border-parchment-dim hover:text-parchment',
+const skin = {
+  base: 'rounded-sm font-display transition-colors',
+  primary: 'border border-accent/60 bg-accent/10 text-accent-bright hover:bg-accent/20',
+  secondary: 'border border-border text-parchment-dim hover:border-parchment-dim hover:text-parchment',
 }
 
 export default function Button({
@@ -33,7 +31,7 @@ export default function Button({
   className = '',
   ...rest
 }) {
-  const classes = `${base} ${variants[variant]} ${className}`
+  const classes = `${layout} ${skin.base} ${skin[variant]} ${className}`
 
   if (to) {
     return (
