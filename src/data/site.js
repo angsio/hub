@@ -23,10 +23,9 @@ export const navLinks = [
 
 // About-page copy, one string per paragraph.
 export const about = [
-  '' +
-  '' +
+  'Hello' +
   '',
-  ''
+  'Hello'
 ]
 
 // The container cards on the Works page — each links out to a subdomain and
