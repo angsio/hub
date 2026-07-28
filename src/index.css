@@ -1,12 +1,5 @@
 @import 'tailwindcss';
 
-/*
-  Frangiclave — design tokens.
-  Palette: the Mansus — a mystical dream-world of deep indigo, moonlit text, and
-  a luminous azure accent, with violet and teal drifting through the ambient
-  glow. Tailwind v4 reads these @theme values and generates utilities like
-  `bg-void`, `text-parchment`, `text-accent`, `font-display`, etc.
-*/
 @theme {
   /* Backgrounds — deep indigo, lifted off pure black so it reads as blue. */
   --color-void: #0b0f1e;
@@ -32,17 +25,10 @@
     Georgia, serif;
 }
 
-/*
-  Layout constants (not design tokens, so kept out of @theme). --nav-h is the
-  fixed navbar height; the home hero subtracts it from the viewport so the fold
-  lands exactly at the hero's bottom edge. Change it in one place and both the
-  navbar and the hero follow.
-*/
 :root {
   --nav-h: 4rem;
 }
 
-/* Base document styling. */
 html {
   scroll-behavior: smooth;
 }
@@ -59,11 +45,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  /*
-    The mystical blue gradients: layered radial glows so the dark never reads
-    flat — azure pooling from the top, amethyst and teal drifting in from the
-    corners. Fixed to the viewport so it stays put on scroll.
-  */
   background-image:
     radial-gradient(
       ellipse 90% 60% at 50% -10%,
@@ -83,7 +64,6 @@ body {
   background-attachment: fixed;
 }
 
-/* Selection uses the azure accent. */
 ::selection {
   background: rgba(139, 172, 255, 0.32);
   color: var(--color-parchment);

@@ -1,20 +1,5 @@
 import { Link } from 'react-router-dom'
 
-/*
-  One button style, three behaviours — so every call-to-action on the site
-  looks identical whether it routes internally, leaves to another site, or
-  just fires an onClick.
-
-    <Button to="/works">…</Button>          internal route  → <Link>
-    <Button href="https://…">…</Button>      external link   → <a> (new tab)
-    <Button href="#contact">…</Button>       in-page anchor  → <a> (same tab)
-    <Button onClick={fn}>…</Button>          action          → <button>
-
-  It renders a single element, so its layout lives in one `layout` string
-  rather than inline JSX; `skin` holds the aesthetic (shape + variant colors).
-  `href` auto-opens a new tab only for http(s), staying same-tab for anchors
-  and mailto:.
-*/
 const layout = 'inline-flex items-center justify-center gap-2 px-6 py-3'
 
 const skin = {

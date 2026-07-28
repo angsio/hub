@@ -1,11 +1,6 @@
 import { site, socials } from '../data/site'
 import List from './List'
 
-/*
-  Persistent site footer, and the site's contact section — it carries id
-  "contact", so the hero's "Reach Me" button (href="#contact") scrolls here on
-  any page. Aesthetic (skin) only below; layout stays inline in the JSX.
-*/
 const styles = {
   footer: 'border-t border-border/70',
   heading: 'font-display text-sm uppercase tracking-[0.3em] text-accent',

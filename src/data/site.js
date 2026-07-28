@@ -1,8 +1,3 @@
-/*
-  Single source of truth for the site's links and copy.
-  Edit these arrays to update the whole page — the components map over them.
-*/
-
 export const site = {
   name: 'Amir Nasirov',
   domain: 'frangiclave.com',
@@ -12,24 +7,19 @@ export const site = {
     'think in systems because order enables scale. Explore who I am, check out my projects, or contact me.',
 }
 
-// The site's own pages, in navbar order. These are SPA routes (`to`), so the
-// navbar renders them with <NavLink> and stars the active one. `end` keeps the
-// home route from matching every path.
 export const navLinks = [
   { label: 'Home', to: '/', end: true },
   { label: 'Works', to: '/works' },
   { label: 'About', to: '/about' },
 ]
 
-// About-page copy, one string per paragraph.
 export const about = [
-  'Hello' +
+  '' +
+  '' +
   '',
-  'Hello'
+  ''
 ]
 
-// The container cards on the Works page — each links out to a subdomain and
-// opens in a new tab.
 export const portals = [
   {
     title: 'Scheduling Agent',
@@ -44,14 +34,14 @@ export const portals = [
       'Vocalbridge API allows voice agent ' +
       'applications. Set up business trips ' +
       'for multiple employees by setting up an agent to record attendance.',
-    href: 'https://trips.frangiclave.com',
+    href: '/crucible',
   },
   {
     title: 'Home Lab',
     blurb:
       'My private and secure hub for my growing technical domain. ' +
       'My Raspberry Pi setup runs my containers for my personal services.',
-    href: 'https://lab.frangiclave.com',
+    href: '/crucible',
   },
 ]
 

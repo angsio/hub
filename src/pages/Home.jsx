@@ -1,10 +1,6 @@
 import { site } from '../data/site'
 import Button from '../components/Button'
 
-/*
-  Aesthetic (skin) only — type, color, the rings' shape. Layout (sizing,
-  centering, spacing, position) stays inline in the JSX below.
-*/
 const styles = {
   ring: 'rounded-full border border-accent/15',
   domain: 'font-display text-sm uppercase tracking-[0.35em] text-accent',
@@ -13,16 +9,10 @@ const styles = {
   intro: 'text-parchment-dim',
 }
 
-/*
-  Home — the landing hero. It's exactly one screen tall (viewport minus the
-  navbar, via --nav-h), so a scroll reveals the footer straight away. Name,
-  pitch, intro, and two CTAs: "Great Works" routes to /works; "Reach Me"
-  scrolls to the footer (#contact), the contact section on every page.
-*/
 export default function Home() {
   return (
     <section className="relative flex min-h-[calc(100svh-var(--nav-h))] flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
-      {/* Concentric rings, absolutely centered on the section. */}
+      
       <div
         aria-hidden
         className={`pointer-events-none absolute left-1/2 top-1/2 -z-10 h-136 w-136 -translate-x-1/2 -translate-y-1/2 ${styles.ring}`}

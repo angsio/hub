@@ -5,6 +5,7 @@ import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Works from './pages/Works'
 import About from './pages/About'
+import Crucible from './pages/Crucible'
 
 /*
   App shell: a persistent Navbar + Footer wrap whichever page the route
@@ -18,10 +19,11 @@ export default function App() {
     <div className="flex min-h-svh flex-col">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex flex-1 flex-col">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/works" element={<Works />} />
+          <Route path="/crucible" element={<Crucible />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
