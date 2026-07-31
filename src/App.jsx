@@ -2,10 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
-import Home from './pages/Home'
-import Works from './pages/Works'
-import About from './pages/About'
-import Crucible from './pages/Crucible'
+import { Home, Works, Project, Crucible, About } from './pages'
 
 export default function App() {
   return (
@@ -16,6 +13,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/works" element={<Works />} />
+          <Route path="/tasks" element={<Project slug="tasks" />} />
+          <Route path="/trips" element={<Project slug="trips" />} />
+          <Route path="/homelab" element={<Project slug="homelab" />} />
           <Route path="/crucible" element={<Crucible />} />
           <Route path="/about" element={<About />} />
         </Routes>

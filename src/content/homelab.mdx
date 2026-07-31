@@ -1,0 +1,55 @@
+## The Raspberry Pi
+
+Model 4B with Raspberry Pi OS, complete with a case and power button toggle. Fan is connected to
+5V on the GPIO with aluminum heat sinks for CPU and RAM cooling.
+
+![Raspberry Pi](/pi.jpg)
+
+## How it is put together
+
+Each project is a Docker Compose stack. The containers share a Docker
+network, which lets them reach each other by service name without
+publishing ports to the outside; the task app API endpoints is reachable from its
+own front end, and nowhere outside the internal network.
+
+nginx sits in front of each front end, serving the built static files and
+proxying `/api` back to the Node service. Public traffic arrives through a Cloudflare tunnel, 
+so no port on my home router is open to the internet. Each project gets its own subdomain.
+
+## What Runs
+
+- `frangiclave.com` - Portfolio Hub
+- `tasks.frangiclave.com` - Scheduling Agent
+- `trips.frangiclave.com` - Business Trip Planner
+- `homelab.frangiclave.com` - Homelab Pi Monorepo
+
+## Lessons Learnt
+ 
+**1. Architecture**\
+Creating MERN stack patterns were different from balancing networks, containers, and cloudflare.
+My applications had to be cohesive with \
+A solid RESTful API was a necessary boundary to containerize the frontend and backend separately
+so each can be a part of the same network correctly, which is also necessary for the cloudflare
+tunnel. This architecture enables me to build without looking back, with this partitioned structure
+and automated with Docker Compose.
+
+**2. Overbearing Classnames**\
+TailwindCSS makes UI and aesthetic design much more pleasant. Covering layout, colours, 
+responsiveness, screen sizes introduces a new issue of an overwhelming amount of classes for
+some elements.\
+Maintaining a ruleset to split classes by their purpose and keeping layout inline
+serves a good communication layer between me and Claude Code when building the frontend.
+
+**3. Development vs. Production**\
+The homelab serves as a natural production line and my laptop as a development line. I would
+crudely ssh into my raspberry pi, copy files over, and manually change ports to move from running
+dev builds to preparing nginx config.\
+I kept a github key for my laptop only, and then setting read-only keys per repo to enforce the pi
+to be pull-only. Setting up vite correctly pays off to have both the dev config and prepared docker ports
+at the same time, so they never overlap and no switching is needed between development and production.
+
+## Why Self-Host?
+
+Deploying to an external platform fails to teach one about the intricacies behind hosting. 
+Running the hardware myself grants privacy and ownership over my project's 
+DNS, certificates, proxying, containers, and handling the things that go wrong.

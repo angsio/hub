@@ -20,33 +20,56 @@ export const about = [
   ''
 ]
 
+/*
+  Each portal is a card on /works AND a page of its own.
+
+    slug       matches the .mdx file in src/content/ and the route in App.jsx
+    blurb      the card copy on /works
+    tagline    the one-line intro at the top of the project page
+    to         the internal route the card links to
+    live       where the button at the bottom of the project page goes;
+               '/crucible' until the real thing is deployed
+    liveLabel  that button's text
+*/
 export const portals = [
   {
+    slug: 'tasks',
     title: 'Scheduling Agent',
     blurb:
       'A tool that books tasks, events, reminders. Built end to end with MongoDB, ' +
       'complete with a self-hosted agent using RAG for tools with Supabase.',
-    href: 'https://tasks.frangiclave.com',
+    tagline: 'A scheduling app with an agent that can read and edit your board.',
+    to: '/tasks',
+    live: 'https://tasks.frangiclave.com',
+    liveLabel: 'Open Tasks',
   },
   {
+    slug: 'trips',
     title: 'Voice Agent',
     blurb:
       'Vocalbridge API allows voice agent ' +
       'applications. Set up business trips ' +
       'for multiple employees by setting up an agent to record attendance.',
-    href: '/crucible',
+    tagline: 'A voice interface for booking travel and recording attendance.',
+    to: '/trips',
+    live: '/crucible',
+    liveLabel: 'Project status',
   },
   {
+    slug: 'homelab',
     title: 'Home Lab',
     blurb:
       'My private and secure hub for my growing technical domain. ' +
       'My Raspberry Pi setup runs my containers for my personal services.',
-    href: '/crucible',
+    tagline: 'The Raspberry Pi that serves every site on this domain.',
+    to: '/homelab',
+    live: '/crucible',
+    liveLabel: 'GitHub Page',
   },
 ]
 
 export const socials = [
   { label: 'GitHub', href: 'https://github.com/angsio' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/amir-nasirov' },
-  { label: 'Email', href: 'mailto:amir@frangiclave.com' },
+  { label: 'Email', href: 'mailto:amir@frangiclave.com' }
 ]

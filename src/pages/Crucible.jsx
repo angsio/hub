@@ -5,7 +5,7 @@ const styles = {
   body: 'text-parchment-dim',
 }
 
-export default function Crucible() {
+export function Crucible() {
   return (
     <section className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
       <div

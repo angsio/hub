@@ -9,7 +9,7 @@ const styles = {
   intro: 'text-parchment-dim',
 }
 
-export default function Home() {
+export function Home() {
   return (
     <section className="relative flex min-h-[calc(100svh-var(--nav-h))] flex-col items-center justify-center overflow-hidden px-6 py-20 text-center">
       

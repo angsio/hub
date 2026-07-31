@@ -2,7 +2,7 @@ import { about } from '../data/site'
 import Page from '../components/Page'
 import Button from '../components/Button'
 
-export default function About() {
+export function About() {
   return (
     <Page title="About" intro="Who am I? Who will I become?">
       <div className="mx-auto max-w-2xl space-y-5 text-left text-parchment-dim">

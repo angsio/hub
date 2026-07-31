@@ -3,7 +3,7 @@ import Page from '../components/Page'
 import List from '../components/List'
 import SectionCard from '../components/SectionCard'
 
-export default function Works() {
+export function Works() {
   return (
     <Page
       title="My Works"
