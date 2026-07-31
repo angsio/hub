@@ -8,7 +8,7 @@ import { fetchAccount, logout } from './auth'
   In:  nothing
   Out: { account, ready, signOut }
        account  { id, email, apps } | null
-       ready    boolean — false until the first check comes back, so the navbar
+       ready    boolean. False until the first check comes back, so the navbar
                 can wait rather than flash the wrong button
        signOut  () -> Promise<void>, ends the session everywhere on the domain
 */

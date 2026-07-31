@@ -36,9 +36,10 @@ export const portals = [
     slug: 'tasks',
     title: 'Scheduling Agent',
     blurb:
-      'A tool that books tasks, events, reminders. Built end to end with MongoDB, ' +
-      'complete with a self-hosted agent using RAG for tools with Supabase.',
-    tagline: 'A scheduling app with an agent that can read and edit your board.',
+      'A board and weekly timetable for tasks, events and reminders, with an ' +
+      'assistant that reads your schedule and shows you every change before it ' +
+      'makes one. One account covers every app on the domain.',
+    tagline: 'A scheduling app with an assistant that reads your board, and asks before it writes.',
     to: '/tasks',
     live: 'https://tasks.frangiclave.com',
     liveLabel: 'Open Tasks',

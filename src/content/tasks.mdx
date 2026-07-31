@@ -1,54 +1,50 @@
-{/*
-  Draft copy — rewrite in your own voice.
-  Markdown works here: ## headers, **bold**, [links](https://…), - lists.
-  Images: put the file in public/ and reference it from the site root, e.g.
-  ![Board view](/tasks-board.png)
-*/}
-
-A scheduling board for tasks, events, and reminders, with a language-model
-agent that can read the board and add to it on request.
+A scheduling board for tasks, events and reminders, with an assistant that can
+read your schedule and add to it when you ask.
 
 ## What it does
 
-Items are grouped under themes — Work, Personal, whatever you create — and shown
-either as a board or on a weekly timetable. The agent sits alongside it: ask it
-what is due this week and it reads the board; ask it to schedule something and it
-proposes the change and waits for confirmation before writing.
+Everything sits under a theme you create, like Work or Personal. You can look at
+it as a board of columns or as a weekly timetable, and the same items appear in
+both. Tasks can carry a deadline, events run from one time to another, and
+reminders sit at a single moment. It works on a phone as well as a desktop, with
+the layout thinning out rather than rearranging itself.
 
-## How it is built
+The assistant lives beside the timetable. Ask what is due this week and it reads
+your board before answering. Ask it to book something straight after your Monday
+meeting and it looks that meeting up first, works out when the meeting ends,
+then shows you exactly what it plans to create and waits. Nothing reaches the
+database until you press confirm, and if you decline it says so rather than
+pretending the job is done.
 
-The client is React with react-router. The API is Express, and data lives in
-MongoDB through Mongoose.
+## The part I am most pleased with
 
-Tasks, events, and reminders share one collection using Mongoose
-**discriminators**. They have a common base — title, theme, timestamps — and then
-each type adds its own fields: a deadline for tasks, a start and end for events,
-a single time for reminders. One collection, three shapes, no duplicated schema.
+The assistant does not start with a list of things it can do. It starts with one
+ability: to go looking for one. When your message arrives it decides whether it
+needs to touch your schedule at all, and if it does, it describes the capability
+it wants in its own words, gets that tool back, and uses it. If the next step
+needs something different, it goes looking again.
 
-## The agent
+Two things fall out of that. Saying hello costs nothing, because it never
+reaches for a tool it does not need. And it cannot invent what is on your
+schedule, because the only route to knowing is to go and read it.
 
-The interesting part is how the agent chooses its tools.
+## One account for everything
 
-Rather than showing the model every tool on every request, each tool's
-description is converted into an **embedding** — a list of numbers representing
-its meaning — and stored in Supabase. When a message arrives, the message is
-embedded too, and only the closest-matching tools are sent along. The idea is
-that adding a tenth tool should not degrade how well the model picks among the
-first nine.
+Signing in once covers the whole domain. The same account works here and on
+anything I add later, each account sees only its own board, and there is one
+login page instead of a password per app. The session lives in a cookie scoped
+to the parent domain, so every subdomain recognises you without anything being
+passed between them.
 
-Tools that only read data run immediately. Tools that write are marked
-`confirm: true`, which stops the loop and returns the proposed action to the
-client for approval before anything reaches the database.
+## Built with
 
-{/* TODO: once the eval harness exists, put the measured numbers here.
-    Retrieval accuracy before and after tuning is the strongest thing
-    this page could say. */}
+React and Tailwind on the front, Express and MongoDB behind it. All of it is
+self hosted on a Raspberry Pi at home and reaches the internet through a
+Cloudflare tunnel, so no port on my router is open.
 
 ## What I would change
 
-{/* TODO — your own words. Some honest candidates drawn from the code:
-    - the similarity threshold is low enough that all three tools currently
-      match every query, so retrieval is not yet doing real work
-    - the confirmation gate is enforced on the client, not the server
-    - there is no authentication yet, so every board is shared
-    Naming a real limitation reads as judgment, not weakness. */}
+With only three tools to choose from, the search that picks them matches
+everything, so that part is built for a scale it has not reached yet. It earns
+its keep at thirty tools, not at three. There is also no password reset, and a
+board left open in two tabs will not update the second one until it is reloaded.

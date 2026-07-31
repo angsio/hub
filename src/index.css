@@ -1,24 +1,24 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Backgrounds — deep indigo, lifted off pure black so it reads as blue. */
+  /* Backgrounds, deep indigo, lifted off pure black so it reads as blue. */
   --color-void: #0b0f1e;
   --color-obsidian: #151a2e;
   --color-crypt: #1e2540;
   --color-border: #333a60;
 
-  /* Text — moonlight on old glass, from bright to faded. */
+  /* Text, moonlight on old glass, from bright to faded. */
   --color-parchment: #edf0fa;
   --color-parchment-dim: #b3bcdc;
   --color-ash: #767fa6;
 
-  /* Accents — the glow of the Glory. Azure leads; violet and teal support. */
-  --color-accent: #8bacff;         /* luminous azure — primary accent */
+  /* Accents, the glow of the Glory. Azure leads; violet and teal support. */
+  --color-accent: #8bacff;         /* luminous azure, primary accent */
   --color-accent-bright: #b8d0ff;
-  --color-accent-violet: #ac8ce0;  /* amethyst — secondary */
-  --color-accent-teal: #58acc4;    /* cold teal — tertiary */
+  --color-accent-violet: #ac8ce0;  /* amethyst, secondary */
+  --color-accent-teal: #58acc4;    /* cold teal, tertiary */
 
-  /* Type — Philosopher (self-hosted, imported in src/main.jsx); serif fallback. */
+  /* Type, Philosopher (self-hosted, imported in src/main.jsx); serif fallback. */
   --font-display: 'Philosopher', 'Iowan Old Style', 'Palatino Linotype',
     Palatino, 'Book Antiqua', 'Hoefler Text', Georgia, serif;
   --font-body: 'Philosopher', 'Iowan Old Style', 'Palatino Linotype', Palatino,
@@ -70,7 +70,7 @@ body {
 }
 
 /*
-  MDX emits bare <h2>, <p>, <img> — no classes. Rather than annotate every
+  MDX emits bare <h2>, <p>, <img>, no classes. Rather than annotate every
   line of prose, style the tags once here and wrap the content in .prose.
   Used by the project pages (src/pages/Project.jsx).
 */

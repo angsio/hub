@@ -1,55 +1,64 @@
 ## The Raspberry Pi
 
-Model 4B with Raspberry Pi OS, complete with a case and power button toggle. Fan is connected to
-5V on the GPIO with aluminum heat sinks for CPU and RAM cooling.
+Model 4B running Raspberry Pi OS, in a case with a power button toggle. The fan
+runs off 5V on the GPIO, with aluminium heat sinks cooling the CPU and RAM.
 
 ![Raspberry Pi](/pi.jpg)
 
 ## How it is put together
 
-Each project is a Docker Compose stack. The containers share a Docker
-network, which lets them reach each other by service name without
-publishing ports to the outside; the task app API endpoints is reachable from its
-own front end, and nowhere outside the internal network.
+Each project is a Docker Compose stack. The containers share a Docker network,
+which lets them reach each other by service name without publishing ports to the
+outside, so the task app's API is reachable from its own front end and from
+nowhere else.
 
 nginx sits in front of each front end, serving the built static files and
-proxying `/api` back to the Node service. Public traffic arrives through a Cloudflare tunnel, 
-so no port on my home router is open to the internet. Each project gets its own subdomain.
+proxying `/api` back to the Node service. Public traffic arrives through a
+Cloudflare tunnel, so no port on my home router is open to the internet. Each
+project gets its own subdomain.
 
 ## What Runs
 
 - `frangiclave.com` - Portfolio Hub
+- `auth.frangiclave.com` - Accounts, shared across every subdomain
 - `tasks.frangiclave.com` - Scheduling Agent
 - `trips.frangiclave.com` - Business Trip Planner
 - `homelab.frangiclave.com` - Homelab Pi Monorepo
 
 ## Lessons Learnt
- 
+
 **1. Architecture**\
-Creating MERN stack patterns were different from balancing networks, containers, and cloudflare.
-My applications had to be cohesive with \
-A solid RESTful API was a necessary boundary to containerize the frontend and backend separately
-so each can be a part of the same network correctly, which is also necessary for the cloudflare
-tunnel. This architecture enables me to build without looking back, with this partitioned structure
-and automated with Docker Compose.
+Building MERN stack patterns was a different problem from balancing networks,
+containers and Cloudflare. My applications had to agree on where the boundary
+between them sat before any of the hosting could be worked out.\
+A solid RESTful API was that boundary. It let me containerise the front end and
+the back end separately while keeping them on the same network, which is also
+what the Cloudflare tunnel needs. That partitioned structure means I can keep
+building without going back to unpick the last thing, and Docker Compose brings
+the whole stack up in one command.
 
 **2. Overbearing Classnames**\
-TailwindCSS makes UI and aesthetic design much more pleasant. Covering layout, colours, 
-responsiveness, screen sizes introduces a new issue of an overwhelming amount of classes for
-some elements.\
-Maintaining a ruleset to split classes by their purpose and keeping layout inline
-serves a good communication layer between me and Claude Code when building the frontend.
+TailwindCSS makes UI and aesthetic design much more pleasant. Covering layout,
+colour, responsiveness and screen sizes introduces a new problem though, which is
+an overwhelming number of classes on a single element.\
+Keeping a ruleset that splits classes by their purpose, with layout written
+inline and appearance named separately, turned out to be a good communication
+layer between me and Claude Code while building the front end.
 
 **3. Development vs. Production**\
-The homelab serves as a natural production line and my laptop as a development line. I would
-crudely ssh into my raspberry pi, copy files over, and manually change ports to move from running
-dev builds to preparing nginx config.\
-I kept a github key for my laptop only, and then setting read-only keys per repo to enforce the pi
-to be pull-only. Setting up vite correctly pays off to have both the dev config and prepared docker ports
-at the same time, so they never overlap and no switching is needed between development and production.
+The homelab is a natural production line and my laptop is the development one. I
+used to ssh into the Pi, copy files across and change ports by hand to get from a
+dev build to a working nginx config.\
+Now the laptop holds the only GitHub key that can write, and the Pi gets
+read-only keys per repository so it can pull and do nothing else. The handful of
+settings that differ between the two, such as which domain a login cookie belongs
+to, live in the Compose file rather than the environment file, and Compose wins
+wherever the two disagree. The same environment file then works in both places
+and I never swap values back and forth.
 
 ## Why Self-Host?
 
-Deploying to an external platform fails to teach one about the intricacies behind hosting. 
-Running the hardware myself grants privacy and ownership over my project's 
-DNS, certificates, proxying, containers, and handling the things that go wrong.
+Deploying to an external platform does not teach you much about what hosting
+actually involves. Running the hardware myself means I own the DNS, the
+certificates, the proxying and the containers, along with everything that goes
+wrong with them.
