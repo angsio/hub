@@ -54,7 +54,7 @@ export const portals = [
     tagline: 'A voice interface for booking travel and recording attendance.',
     to: '/trips',
     live: '/crucible',
-    liveLabel: 'Project status',
+    liveLabel: 'Status',
   },
   {
     slug: 'homelab',
@@ -65,7 +65,7 @@ export const portals = [
     tagline: 'The Raspberry Pi that serves every site on this domain.',
     to: '/homelab',
     live: '/crucible',
-    liveLabel: 'GitHub Page',
+    liveLabel: 'GitHub Page (NOT UP)',
   },
 ]
 
