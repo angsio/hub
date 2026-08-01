@@ -38,7 +38,7 @@ export const portals = [
     blurb:
       'A board and weekly timetable for tasks, events and reminders, with an ' +
       'assistant that reads your schedule and shows you every change before it ' +
-      'makes one. One account covers every app on the domain.',
+      'makes one.',
     tagline: 'A scheduling app with an assistant that reads your board, and asks before it writes.',
     to: '/tasks',
     live: 'https://tasks.frangiclave.com',

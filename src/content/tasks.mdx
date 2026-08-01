@@ -1,50 +1,43 @@
-A scheduling board for tasks, events and reminders, with an assistant that can
-read your schedule and add to it when you ask.
+A scheduling board for tasks, events and reminders, with an assistant that reads
+your schedule and adds to it when you ask.
 
-## What it does
+Everything sits under a theme you create, like Work or Personal. The same items
+can be read as a board of columns or as a weekly timetable, and both work on a
+phone.
 
-Everything sits under a theme you create, like Work or Personal. You can look at
-it as a board of columns or as a weekly timetable, and the same items appear in
-both. Tasks can carry a deadline, events run from one time to another, and
-reminders sit at a single moment. It works on a phone as well as a desktop, with
-the layout thinning out rather than rearranging itself.
+## Key Features
 
-The assistant lives beside the timetable. Ask what is due this week and it reads
-your board before answering. Ask it to book something straight after your Monday
-meeting and it looks that meeting up first, works out when the meeting ends,
-then shows you exactly what it plans to create and waits. Nothing reaches the
-database until you press confirm, and if you decline it says so rather than
-pretending the job is done.
+- **The assistant asks for its own tools.**\ It starts with a single ability,
+  which is to go looking for one. Each prompt, it decides whether
+  it needs to touch your schedule at all. If it does, it describes the
+  capability it wants in plain words so it finds the appropriate tool. If previous
+  discussion context holds relevant information, no extra tool calls are made,
+  saving compute cost. Inventing your schedule is impossible, because the only 
+  way to know is read it.
 
-## The part I am most pleased with
+- **Nothing is written without permission.**\ Tools that read run straight away.
+  Anything that updates information asks for your confirmation by clearly 
+  communicating what it's going to do. Ask it to remind you of something after a 
+  work meeting, it will look through your items, see when that meeting ends, 
+  and ask you whether it got the details right. 
 
-The assistant does not start with a list of things it can do. It starts with one
-ability: to go looking for one. When your message arrives it decides whether it
-needs to touch your schedule at all, and if it does, it describes the capability
-it wants in its own words, gets that tool back, and uses it. If the next step
-needs something different, it goes looking again.
+- **One collection, three kinds of item.**\ Tasks, events and reminders share a
+  title, a theme and timestamps, then each adds only what it needs: optional deadlines
+  for tasks, starts and ends for event, a single time for reminders. That
+  is one shape to keep honest instead of three, and it is why the board and the
+  timetable can draw every item without special cases.
 
-Two things fall out of that. Saying hello costs nothing, because it never
-reaches for a tool it does not need. And it cannot invent what is on your
-schedule, because the only route to knowing is to go and read it.
+## What's Next
 
-## One account for everything
+- **More Tools, Sophisticated Tools.**\ It can read and create themes and items,
+  but more tools for editing, swapping, moving, deleting, and whatever else a scheduling
+  agent could use, are still a work in progress. The pipeline is built for scale,
+  winning optimisation at about 30 tools not just the current three.
 
-Signing in once covers the whole domain. The same account works here and on
-anything I add later, each account sees only its own board, and there is one
-login page instead of a password per app. The session lives in a cookie scoped
-to the parent domain, so every subdomain recognises you without anything being
-passed between them.
+- **Recurring Items, Wider Scope.** Weekly deadlines consolidate into one entry. 
+  Introduce monthly interfaces, daily modals, and accomodate near-indefinite 
+  coverage of time planning.
 
-## Built with
-
-React and Tailwind on the front, Express and MongoDB behind it. All of it is
-self hosted on a Raspberry Pi at home and reaches the internet through a
-Cloudflare tunnel, so no port on my router is open.
-
-## What I would change
-
-With only three tools to choose from, the search that picks them matches
-everything, so that part is built for a scale it has not reached yet. It earns
-its keep at thirty tools, not at three. There is also no password reset, and a
-board left open in two tabs will not update the second one until it is reloaded.
+- **Testing.** As the project grows with time and features, I would like testing
+  procedures implemented to automatically set up dedicated localhost ports for 
+  services and test api routes for connectivity, function, and matching data shapes.

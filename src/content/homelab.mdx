@@ -5,7 +5,7 @@ runs off 5V on the GPIO, with aluminium heat sinks cooling the CPU and RAM.
 
 ![Raspberry Pi](/pi.jpg)
 
-## How it is put together
+## Put Together
 
 Each project is a Docker Compose stack. The containers share a Docker network,
 which lets them reach each other by service name without publishing ports to the
@@ -20,10 +20,22 @@ project gets its own subdomain.
 ## What Runs
 
 - `frangiclave.com` - Portfolio Hub
-- `auth.frangiclave.com` - Accounts, shared across every subdomain
+- `auth.frangiclave.com` - Accounts Layer, shared domain-wide
 - `tasks.frangiclave.com` - Scheduling Agent
-- `trips.frangiclave.com` - Business Trip Planner
-- `homelab.frangiclave.com` - Homelab Pi Monorepo
+- `trips.frangiclave.com` - Business Trip Planner (WIP)
+- `homelab.frangiclave.com` - Homelab Pi Monorepo (WIP)
+
+## One Account
+
+User authentication happens once on its own service layer to give access to 
+my whole site. The browser is handed a session that belongs to the parent domain, 
+so it sends that session to each subdomain under it too. Nothing has to be passed 
+between the apps, and none of them handle a password.
+
+Each app asks the auth service who a request belongs to, gets back an id, and
+then only ever touches that person's data. Adding a fourth app requires only
+adding it to the same service, and locking an app to particular accounts is
+one field on the account.
 
 ## Lessons Learnt
 
@@ -34,8 +46,8 @@ between them sat before any of the hosting could be worked out.\
 A solid RESTful API was that boundary. It let me containerise the front end and
 the back end separately while keeping them on the same network, which is also
 what the Cloudflare tunnel needs. That partitioned structure means I can keep
-building without going back to unpick the last thing, and Docker Compose brings
-the whole stack up in one command.
+building without stepping back to accomodate new infrastructure, and Docker Compose 
+brings the whole stack up in one command.
 
 **2. Overbearing Classnames**\
 TailwindCSS makes UI and aesthetic design much more pleasant. Covering layout,
@@ -47,14 +59,13 @@ layer between me and Claude Code while building the front end.
 
 **3. Development vs. Production**\
 The homelab is a natural production line and my laptop is the development one. I
-used to ssh into the Pi, copy files across and change ports by hand to get from a
+would ssh into the Pi, copy files across and change ports by hand to get from a
 dev build to a working nginx config.\
-Now the laptop holds the only GitHub key that can write, and the Pi gets
-read-only keys per repository so it can pull and do nothing else. The handful of
+That was ineffective and crude. Now my laptop holds the only writing GitHub key, 
+and the Pi gets read-only repo keys so it can only pull. The handful of
 settings that differ between the two, such as which domain a login cookie belongs
-to, live in the Compose file rather than the environment file, and Compose wins
-wherever the two disagree. The same environment file then works in both places
-and I never swap values back and forth.
+to, live in the Compose file rather than the environment file to overwrite development
+settings. This reinforces a streamlined transition between development and production.
 
 ## Why Self-Host?
 
