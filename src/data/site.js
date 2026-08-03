@@ -56,9 +56,9 @@ export const portals = [
     slug: 'homelab',
     title: 'Home Lab',
     blurb:
-      'My Raspberry Pi setup serves the whole site. Five subdomains ' +
-      'with a Docker Compose stack each, sitting behind a cloudflare tunnel ' +
-      'to avoid open router ports.',
+      'My Raspberry Pi serves the whole site. The portfolio, the accounts ' +
+      'layer and the task app get a Docker Compose stack each, sitting behind ' +
+      'a Cloudflare tunnel to avoid open router ports.',
     tagline: 'The Raspberry Pi that serves every site on this domain.',
     to: '/homelab',
     // The homelab is not one repo, it is the several this domain runs on, so

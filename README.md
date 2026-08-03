@@ -14,7 +14,7 @@ and served by nginx from a Raspberry Pi.
 React 19 · Vite 8 · react-router 7 · Tailwind 4 · MDX compiled at build time by
 `@mdx-js/rollup` · oxlint · Docker Compose and nginx on a Raspberry Pi 4B.
 
-## Prerendering, In Ninety Lines
+## Prerendered At Build Time
 
 A single-page app ships one HTML file with an empty `<div id="root">` and fills
 it in once JavaScript runs. Link-preview bots do not run JavaScript. LinkedIn,
@@ -28,9 +28,9 @@ browser, once with `--ssr` to compile the same `<App />` for Node — and then
 `scripts/prerender.js` walks a list of routes, renders each one to a string with
 `StaticRouter`, drops the markup into the shell's empty root, rewrites the
 `<head>` with that page's title, description, canonical URL and Open Graph and
-Twitter tags, and writes `dist/<route>/index.html`. About ninety lines, no
-plugin, and the route list lives next to the render function so adding a page
-means adding one entry.
+Twitter tags, and writes `dist/<route>/index.html`. One script, no plugin, and
+the route list lives next to the render function so adding a page means adding
+one entry.
 
 Two things make it hold together. `main.jsx` checks whether the root already has
 children and calls `hydrateRoot` if it does and `createRoot` if it does not, so
