@@ -36,18 +36,21 @@ export function Project({ slug }) {
 
       <div className="mt-14 flex flex-wrap items-center justify-center gap-4">
         {/*
-          `target` is passed explicitly because Button only opens a new tab on
-          its own for http(s) links, and an undeployed project points at the
-          internal /crucible route.
+          The first link is the one to press, so it leads. `target` is passed
+          explicitly because Button only opens a new tab on its own for http(s)
+          links, and an undeployed project points at the internal /crucible route.
         */}
-        <Button
-          href={portal.live}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="primary"
-        >
-          {portal.liveLabel}
-        </Button>
+        {portal.links.map((link, index) => (
+          <Button
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant={index === 0 ? 'primary' : 'secondary'}
+          >
+            {link.label}
+          </Button>
+        ))}
         <Button to="/works" variant="secondary">
           Works
         </Button>

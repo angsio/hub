@@ -1,15 +1,13 @@
-import { about } from '../data/site'
 import Page from '../components/Page'
 import Button from '../components/Button'
+import AboutBody from '../content/about.mdx'
 
 export function About() {
   return (
-    <Page title="About" intro="Who am I? Who will I become?">
-      <div className="mx-auto max-w-2xl space-y-5 text-left text-parchment-dim">
-        {about.map((paragraph) => (
-          <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-        ))}
-      </div>
+    <Page title="About" intro="Who am I? Who do I want to be?">
+      <article className="prose mx-auto max-w-2xl text-left text-parchment-dim">
+        <AboutBody />
+      </article>
 
       <div className="mt-12 flex justify-center">
         <Button to="/works" variant="primary">

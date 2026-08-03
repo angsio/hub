@@ -13,13 +13,6 @@ export const navLinks = [
   { label: 'About', to: '/about' },
 ]
 
-export const about = [
-  '' +
-  '' +
-  '',
-  ''
-]
-
 /*
   Each portal is a card on /works AND a page of its own.
 
@@ -27,9 +20,9 @@ export const about = [
     blurb      the card copy on /works
     tagline    the one-line intro at the top of the project page
     to         the internal route the card links to
-    live       where the button at the bottom of the project page goes;
-               '/crucible' until the real thing is deployed
-    liveLabel  that button's text
+    links      the buttons at the bottom of the project page, { href, label }.
+               The first one leads and is styled as the primary action; the
+               rest follow. '/crucible' stands in until a thing is deployed
 */
 export const portals = [
   {
@@ -41,31 +34,38 @@ export const portals = [
       'makes one.',
     tagline: 'A scheduling app with an assistant that reads your board, and asks before it writes.',
     to: '/tasks',
-    live: 'https://tasks.frangiclave.com',
-    liveLabel: 'Open Tasks',
+    links: [
+      { href: 'https://tasks.frangiclave.com', label: 'Open Tasks' },
+      { href: 'https://github.com/angsio/task-app', label: 'Source' },
+    ],
   },
   {
     slug: 'trips',
     title: 'Voice Agent',
     blurb:
-      'Vocalbridge API allows voice agent ' +
-      'applications. Set up business trips ' +
-      'for multiple employees by setting up an agent to record attendance.',
-    tagline: 'A voice interface for booking travel and recording attendance.',
+      'Organise a business trip and everyone on it gets a phone call rather ' +
+      'than a form. A voice agent asks who is coming, where they are leaving ' +
+      'from and when they would rather travel, and writes the answers back.',
+    tagline: 'Employees are phoned by a voice agent instead of being sent a form.',
     to: '/trips',
-    live: '/crucible',
-    liveLabel: 'Status',
+    links: [
+      { href: 'https://github.com/angsio/vocalbridge-trips', label: 'Source' },
+    ],
   },
   {
     slug: 'homelab',
     title: 'Home Lab',
     blurb:
-      'My private and secure hub for my growing technical domain. ' +
-      'My Raspberry Pi setup runs my containers for my personal services.',
+      'My Raspberry Pi setup serves the whole site. Five subdomains ' +
+      'with a Docker Compose stack each, sitting behind a cloudflare tunnel ' +
+      'to avoid open router ports.',
     tagline: 'The Raspberry Pi that serves every site on this domain.',
     to: '/homelab',
-    live: '/crucible',
-    liveLabel: 'GitHub Page (NOT UP)',
+    // The homelab is not one repo, it is the several this domain runs on, so
+    // this points at the profile that holds them all rather than at one of them.
+    links: [
+      { href: 'https://github.com/angsio', label: 'The Repositories' },
+    ],
   },
 ]
 

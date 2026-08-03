@@ -1,12 +1,55 @@
 {/*
-  Draft copy — rewrite in your own voice.
-  I know the least about this project, so most of this is scaffolding.
-  Images: put the file in public/, then ![Architecture](/vocalbridge.png)
+  Images: put the file in public/, then reference it from the site root, like
+  ![Architecture](/vocalbridge.png)
+
+  Built with my brother Ildar at a hackathon. He wrote the server and every
+  third-party integration in it; I wrote the client. The attribution line at the
+  end should survive whatever this gets rewritten into.
 */}
 
-VocalBridge is a voice interface for arranging business travel — booking trips
-for multiple employees and recording attendance by speaking rather than filling
-in a form.
+Someone organises a business trip and needs to know who is coming, where each
+person is flying from and when they would rather travel. Normally that is a form,
+and half the team ignores it. Here they get an email asking them to phone a
+number instead. A voice agent takes the call, asks the three questions, and the
+answers land against the trip before anyone has opened a spreadsheet.
 
-It was built at a DeepLearning.AI hackathon held at the Computer History Museum.
-It is not deployed yet.
+## The Pipeline
+
+Employee records go in as PDFs. Landing AI parses each one to markdown and then
+extracts it against a small schema, which pulls out a name, an email, a location
+and a phone number. Those become employees in the database, attached to a trip.
+
+Resend emails each of them the number to call. The VocalBridge agent answers,
+confirms whether they are attending, asks which city they are leaving from and
+whether they would rather travel during the day or at night, and writes all of it
+back against the trip. Sabre supplies the travel data, and anything genuinely
+private, the sort of thing nobody should be reading aloud to a voice agent, is
+collected through a one-time secure link instead.
+
+## Four And A Half Hours
+
+Setup finished around half ten and judging was at three. The commit log runs
+11:05 to 15:07.
+
+Six third-party services in an afternoon only works if the two halves never wait
+on each other. So the front end was built against a fake. One module chooses
+between a mock implementation and the real one behind a single interface, picked
+by an environment variable, and no page in the app knows which it is talking to.
+The screens could be built and clicked through while the routes underneath them
+did not exist yet, and when the real ones landed the switch was one variable
+rather than a rewrite.
+
+That is the part worth taking away. Under a deadline the instinct is to write
+less, and what actually saved time was writing one extra layer that did nothing
+useful on its own.
+
+## What It Isn't
+
+It is not deployed. The host it ran on during the hackathon has been retired, and
+the backend has no authentication of any kind, which was acceptable for four
+hours on a private address and is not acceptable in public. What remains is
+proper auth on the server, tests, and a deployment that does not hand out API
+keys.
+
+It was a two-person project. My brother Ildar built the server and every
+integration in it; I built the client and tested the pipeline end to end.

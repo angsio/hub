@@ -1,0 +1,79 @@
+{/*
+  Markdown quick reference, since this is the only file on the site written in it.
+  Anything inside these braces is a comment and never appears on the page.
+
+    ## Header            a section heading
+    ### Smaller Header   a subheading
+    **bold**             emphasis, comes out in bright parchment
+    *italic*             italic
+    [text](https://…)    a link, azure and underlined
+    - item               a bullet list, one per line
+    `code`               inline code, styled like a chip
+    > quoted line        an indented quote
+
+    ![Me](/portrait.jpg) an image. Put the file in public/ first, then
+                         reference it from the site root like this.
+
+  A blank line between paragraphs is what separates them. A single line break
+  does nothing, so wrap text wherever is comfortable.
+
+  Every line below is true but deliberately plain. Rewrite it in your voice.
+*/}
+
+I'm Amir, studying Engineering Science at the University of Toronto. I prefer
+owning the whole stack, hardware, software, and domain.
+
+## Current Goals
+
+I want to intern in software this Fall 2026 before returning to full-time studies
+in January. I'm a Canadian citizen living in Toronto, open to working in office or
+remote in Toronto or the Greater Toronto Area.
+
+## My Technical Domain
+
+{/*
+  Your strongest section. Most students deploy to a platform; you administer
+  the machine. Say what is actually running, then say what owning it forced
+  you to learn that a deploy button would have hidden.
+
+  A photo of the Pi would sit well here.
+*/}
+
+With one Raspberry Pi 4B and one domain, Docker Compose deploys React with nginx 
+and backend with express on a shared container network, including a Cloudflare tunnel 
+to keep my home router untapped. Accounts are shared across all of them by a single 
+extra auth service container, reaching every app on my domain.
+
+Running it myself gives me the holistic view and teaches me the infrastructure of 
+container networking and cloudflare deployment.
+
+## Building
+
+{/*
+  One decision where you chose A over B, and why. Then one thing you know is
+  not finished, and what you would do about it.
+
+  Naming a limitation you have already diagnosed is the clearest signal that
+  you evaluate your own work. Some true options from your code:
+    - tools are retrieved by embedding so the agent does not degrade as tools
+      are added, and the threshold is not yet doing real work at three tools
+    - writes are last-write-wins at field granularity, because PATCH is partial
+    - the client cache is updated from the write response rather than refetched
+*/}
+
+I like setting the flow of user experience and reinforcing that in my infrastructure
+and applications. When it comes to my scheduling agent, it assesses whether it needs
+tools when interacting with users. When tools are needed, it sends a description
+of its goal so my RAG architecture can match it to the most relevant tool. 
+While the system doesn't help much for three tools, laying down the agentic 
+pipeline for the ability to scale is what I find important. It enables
+me to tune individual pieces and measure their improvement such as retrieval accuracy.
+
+## Frangiclave
+
+{/*
+  One sentence. The site is already themed; a short line acknowledging it is
+  charming, three would be indulgent.
+*/}
+
+A key that opens a door which is not there yet.
