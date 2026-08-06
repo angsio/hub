@@ -31,7 +31,7 @@ export const routes = [
     path: '/works',
     title: `Works · ${site.name}`,
     description:
-      'Projects built and self-hosted on a Raspberry Pi: a scheduling agent, a voice agent, and the home lab that serves them.',
+      'Projects built and self-hosted on a Raspberry Pi: a scheduling agent, a voice trip coordinator, and the home lab that serves them.',
   },
   ...portals.map((portal) => ({
     path: portal.to,

@@ -41,7 +41,7 @@ export const portals = [
   },
   {
     slug: 'trips',
-    title: 'Voice Agent',
+    title: 'Voice Trip Coordinator',
     blurb:
       'Organise a business trip and everyone on it gets a phone call rather ' +
       'than a form. A voice agent asks who is coming, where they are leaving ' +
@@ -54,12 +54,12 @@ export const portals = [
   },
   {
     slug: 'homelab',
-    title: 'Home Lab',
+    title: 'Frangiclave',
     blurb:
       'My Raspberry Pi serves the whole site. The portfolio, the accounts ' +
       'layer and the task app get a Docker Compose stack each, sitting behind ' +
       'a Cloudflare tunnel to avoid open router ports.',
-    tagline: 'The Raspberry Pi that serves every site on this domain.',
+    tagline: 'The self-hosted platform every site on this domain runs on.',
     to: '/homelab',
     // The homelab is not one repo, it is the several this domain runs on, so
     // this points at the profile that holds them all rather than at one of them.

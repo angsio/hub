@@ -3,8 +3,9 @@
   ![Architecture](/vocalbridge.png)
 
   Built with my brother Ildar at a hackathon. He wrote the server and every
-  third-party integration in it; I wrote the client. The attribution line at the
-  end should survive whatever this gets rewritten into.
+  third-party integration in it; I wrote the client and built the voice agent
+  itself. The attribution line at the end should survive whatever this gets
+  rewritten into.
 */}
 
 Someone organises a business trip and needs to know who is coming, where each
@@ -26,10 +27,10 @@ back against the trip. Sabre supplies the travel data, and anything genuinely
 private, the sort of thing nobody should be reading aloud to a voice agent, is
 collected through a one-time secure link instead.
 
-## Four And A Half Hours
+## Four Hours
 
-Setup finished around half ten and judging was at three. The commit log runs
-11:05 to 15:07.
+Built in 4 hours at the DeepLearning.AI hackathon in the Computer History Museum, Silicon
+Valley, California. First commit 11:05. Last commit 15:07.
 
 Six third-party services in an afternoon only works if the two halves never wait
 on each other. So the front end was built against a fake. One module chooses
@@ -52,4 +53,5 @@ proper auth on the server, tests, and a deployment that does not hand out API
 keys.
 
 It was a two-person project. My brother Ildar built the server and every
-integration in it; I built the client and tested the pipeline end to end.
+integration in it. I built the client, set up the VocalBridge agent that takes
+the calls, and tested the pipeline end to end.

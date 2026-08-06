@@ -1,0 +1,9 @@
+prerender payload — dist/index.html, home route '/'
+measured 2026-08-04T17:47:43Z on bd7ab5f
+
+  client build only      749 bytes  (0.7 KB)
+  prerendered           5840 bytes  (5.8 KB)
+  ratio               7.80x
+
+  KB here is 1000 bytes, not 1024. State both figures in the
+  same unit on the resume — do not mix 'bytes' and 'KB'.
